@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,400;0,500;1,500&family=Fuzzy+Bubbles:wght@400;700&family=Orbitron:wght@500&display=swap');
+/* 
+font-family: 'Exo', sans-serif;
+font-family: 'Fuzzy Bubbles', cursive;
+font-family: 'Exo', sans-serif;
+*/
+
+.clock {
+   font-size: 3rem;   
+   font-family: 'Fuzzy Bubbles', cursive;
+   padding-top: 60px;
+   padding-left: 72px;}
+
+
