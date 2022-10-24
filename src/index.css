@@ -55,3 +55,45 @@ input[type=text] {
   color: #f8f8f8;
   text-align: center;
 }
+.container {
+  max-width: 600px;
+  height: 600px;
+  margin: auto;
+  padding: 0 1rem;
+  position: relative;
+  top: 10%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+}
+.app .top {
+  width: 100%;
+  margin: 1rem auto;
+}
+.app .description {
+  position: relative;
+  right: -90%;
+  transform-origin: 0 0;
+  transform: rotate(269deg);
+}
+.app .bottom {
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  width: 100%;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.location {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.bold {
+  font-weight: 700;
+}
