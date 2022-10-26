@@ -18,9 +18,27 @@ function Weather() {
         setLocation('')
       }
     }
+
+    const status  =  () => { 
+      if (data.weather[0].main  === 'Clouds') {
+        return status.className="status-clouds";
+      } else if (data.weather[0].main = 'Clear') {
+        return document.getElementById('status').style.backgroundImage = "url('https://images.unsplash.com/photo-1506746305689-3b8b8f3e9f1c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWRzfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80')"
+      } else if (data.weather[0].main = 'Rain') {
+        return document.getElementById('status').style.backgroundImage = "url('https://images.unsplash.com/photo-1506746305689-3b8b8f3e9f1c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWRzfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80')"
+      } else if (data.weather[0].main = 'Snow') {
+        return document.getElementById('status').style.backgroundImage = "url('https://images.unsplash.com/photo-1506746305689-3b8b8f3e9f1c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWRzfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80')"
+
+        
+      }
+
+    }
+    
+    
   
     return (
       <div className="app">
+        
         <div className="search">
           <input
             value={location}
@@ -29,6 +47,8 @@ function Weather() {
             placeholder="Enter Location"
             type="text" />
         </div>
+        <Clock/>
+
         <div className="container">
           <div className="top">
             <div className="location">
@@ -38,10 +58,11 @@ function Weather() {
               {data.main ? <h1>{data.main.temp.toFixed()}°C </h1> : null}
             </div>
             <div className="description">
-              {data.weather ? <p>{data.weather[0].main }</p> : null}
+              {data.weather ? <p id='status'>{data.weather[0].main} </p> : null}
             </div>
-            <div> {data.main ? data.weather.main : <Welcomepage/> } <Clock/></div>
+            <div> {data.main ? data.weather.main : <Welcomepage/> } </div>
           </div>
+    
         
           {data.name !== undefined &&
             <div className="bottom">
@@ -60,8 +81,9 @@ function Weather() {
             </div>
           }
           
+          
+          
         </div>
-       
       </div>
       
     );

@@ -6,9 +6,31 @@ font-family: 'Exo', sans-serif;
 */
 
 .clock {
-   font-size: 3rem;   
+   font-size: 48px;   
    font-family: 'Fuzzy Bubbles', cursive;
-   padding-top: 60px;
-   padding-left: 72px;}
+   text-align: center;
+   /* background: -webkit-linear-gradient(rgb(186, 216, 216) 5%, rgb(40, 202, 202) 75%);
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent; */
+   font-weight: 700;
+   text-align: left;
+   width: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   padding: 1.25rem;
+   user-select: none;
+   width: 20rem ;
+   z-index: -1;
+   color: black;
+}
 
 
+@media only screen and (max-width: 900px) {
+   .clock {
+      text-align: center;
+      position: none;
+      padding: 3.5rem;
+      transition: all 0.5s ease;
+   }
+ }
