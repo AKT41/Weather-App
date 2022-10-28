@@ -13,10 +13,11 @@ function Weather() {
         axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${loc}&units=metric&appid=8a87a6f77adbe0a4dae673c48c8e9eab`)
         .then(res => {
             setData(res.data)
+            updateBg(res.data)
         })
         .catch(err => {
           setCookie('location', '', { path: '/' });
-          alert('Please enter a valid location')
+          alert('sikiecem')
         })
       }
         
@@ -27,8 +28,43 @@ function Weather() {
       getWeather(cookies.location ? cookies.location : undefined); 
     }, []);
 
-
-   
+    function updateBg(d) {
+      let elm = document.querySelector('.app')
+      if (d.weather[0].main === 'Clear') {
+        elm.style.background = 'url('+ require('./images/clear.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Clouds') {
+        elm.style.background = 'url('+ require('./images/clouds.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Rain') {
+        elm.style.background = 'url('+ require('./images/rain.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Snow') {
+        elm.style.background = 'url('+ require('./images/snow.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Thunderstorm') {
+        elm.style.background = 'url('+ require('./images/thunderstorm.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Mist') {
+        elm.style.background = 'url('+ require('./images/fog.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Smoke') {
+        elm.style.background = 'url('+ require('./images/fog.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Dust') {
+        elm.style.background = 'url('+ require('./images/dust.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Fog') {
+        elm.style.background = 'url('+ require('./images/fog.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Squall') {
+        elm.style.background = 'url('+ require('./images/squall.jpg') +') no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Tornado') {
+        elm.style.background = 'url('+ require('./images/tornado.jpg') +') no-repeat center center/cover'
+      } 
+    }
+    
 
     function searchLocation(e) {
       if (e.key === 'Enter') {
