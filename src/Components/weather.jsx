@@ -1,77 +1,40 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import {useCookies} from 'react-cookie';
 import axios from 'axios'
 import Clock from './clock'
 import Welcomepage from './welcomepage'
 
 function Weather() {
     const [data, setData] = useState({})
-    const [location, setLocation] = useState('')
-  
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=8a87a6f77adbe0a4dae673c48c8e9eab`
-  
-    const searchLocation = (e) => {
-      if (e.key === 'Enter') {
-        axios.get(url).then((response) => {
-          setData(response.data)
-          updateBg(response.data)
-          console.log(response.data)
+    const [cookies, setCookie] = useCookies(['location']);
+    
+    function getWeather(loc) {
+      if (!!loc) {
+        axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${loc}&units=metric&appid=8a87a6f77adbe0a4dae673c48c8e9eab`)
+        .then(res => {
+            setData(res.data)
         })
-        setLocation('')
+        .catch(err => {
+          setCookie('location', '', { path: '/' });
+          alert('Please enter a valid location')
+        })
       }
+        
     }
 
-    function updateBg(d) {
-      let elm = document.querySelector('.app')
-      if (d.weather[0].main === 'Clear') {
-        elm.style.background = 'url('+ require('./images/clear.jpg') +') no-repeat center center/cover'
+
+    useEffect(() => {
+      getWeather(cookies.location ? cookies.location : undefined); 
+    }, []);
+
+
+   
+
+    function searchLocation(e) {
+      if (e.key === 'Enter') {
+        getWeather(cookies.location ? cookies.location : undefined);
       }
-      else if (d.weather[0].main === 'Clouds') {
-        elm.style.background = 'url('+ require('./images/cloudy-weather-blue-sky-cumulus-clouds-cloudscape-background-wallpaper-backdrop-natural-design-decoration-179502729.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Rain') {
-        elm.style.background = 'url('+ require('./images/rain.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Snow') {
-        elm.style.background = 'url('+ require('./images/snow.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Thunderstorm') {
-        elm.style.background = 'url('+ require('./images/thunderstorm.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Drizzle') {
-        elm.style.background = 'url('+ require('./images/drizzle.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Mist') {
-        elm.style.background = 'url('+ require('./images/mist.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Smoke') {
-        elm.style.background = 'url('+ require('./images/smoke.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Haze') {
-        elm.style.background = 'url('+ require('./images/haze.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Dust') {
-        elm.style.background = 'url('+ require('./images/dust.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Fog') {
-        elm.style.background = 'url('+ require('./images/fog.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Sand') {
-        elm.style.background = 'url('+ require('./images/sand.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Ash') {
-        elm.style.background = 'url('+ require('./images/ash.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Squall') {
-        elm.style.background = 'url('+ require('./images/squall.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Tornado') {
-        elm.style.background = 'url('+ require('./images/tornado.jpg') +') no-repeat center center/cover'
-      }
-      else {
-        elm.style.background = 'url('+ require('./images/default.jpg') +') no-repeat center center/cover'
-      } 
     }
-    
     
   
     return (
@@ -79,8 +42,8 @@ function Weather() {
         
         <div className="search">
           <input
-            value={location}
-            onChange={e => setLocation(e.target.value)}
+            // value={location}
+            onChange={(e) => {setCookie('location', e.target.value, {path: '/'}); }}
             onKeyPress={searchLocation}
             placeholder="Enter Location"
             type="text" />
@@ -126,6 +89,5 @@ function Weather() {
       
     );
   }
-  
-  export default Weather;
+export default Weather;
   
