@@ -17,7 +17,7 @@ function Weather() {
         })
         .catch(err => {
           setCookie('location', '', { path: '/' });
-          alert('sikiecem')
+          alert('Please enter a valid location')
         })
       }
         

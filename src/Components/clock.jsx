@@ -9,13 +9,13 @@ function Clock() {
   useEffect (() => {
     setInterval (() => { 
       setDateState(new Date().toLocaleDateString());  //  
-    }, 1000);
+    }, 1);
   } , []);
 
   useEffect(() => {
     setInterval(() => {
       setClockState(new Date().toLocaleTimeString()); // Time
-    }, 1000);
+    }, 1);
   }, []);
   
 
