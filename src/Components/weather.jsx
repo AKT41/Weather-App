@@ -13,25 +13,24 @@ function Weather() {
       if (e.key === 'Enter') {
         axios.get(url).then((response) => {
           setData(response.data)
+          updateBg(response.data)
           console.log(response.data)
         })
         setLocation('')
       }
     }
 
-    const status  =  () => { 
-      if (data.weather[0].main  === 'Clouds') {
-        return status.className="status-clouds";
-      } else if (data.weather[0].main = 'Clear') {
-        return document.getElementById('status').style.backgroundImage = "url('https://images.unsplash.com/photo-1506746305689-3b8b8f3e9f1c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWRzfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80')"
-      } else if (data.weather[0].main = 'Rain') {
-        return document.getElementById('status').style.backgroundImage = "url('https://images.unsplash.com/photo-1506746305689-3b8b8f3e9f1c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWRzfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80')"
-      } else if (data.weather[0].main = 'Snow') {
-        return document.getElementById('status').style.backgroundImage = "url('https://images.unsplash.com/photo-1506746305689-3b8b8f3e9f1c?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Y2xvdWRzfGVufDB8fDB8&ixlib=rb-1.2.1&w=1000&q=80')"
-
-        
+    function updateBg(d) {
+      let elm = document.querySelector('.app')
+      if (d.weather[0].main === 'Clear') {
+        elm.style.background = 'url(./images/clear.jpg)'
       }
-
+      else if (d.weather[0].main === 'Clouds') {
+        elm.style.background = 'url('+ require('./images/cloudy-weather-blue-sky-cumulus-clouds-cloudscape-background-wallpaper-backdrop-natural-design-decoration-179502729.jpg') +')no-repeat center center/cover'
+      }
+      else if (d.weather[0].main === 'Rain') {
+        elm.style.background = 'url(./images/rain.jpg)'
+      }
     }
     
     
