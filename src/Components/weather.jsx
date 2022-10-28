@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
 import axios from 'axios'
+import React, { useState } from 'react'
 import Clock from './clock'
 import Welcomepage from './welcomepage'
 
@@ -26,7 +26,7 @@ function Weather() {
         elm.style.background = 'url('+ require('./images/clear.jpg') +') no-repeat center center/cover'
       }
       else if (d.weather[0].main === 'Clouds') {
-        elm.style.background = 'url('+ require('./images/cloudy-weather-blue-sky-cumulus-clouds-cloudscape-background-wallpaper-backdrop-natural-design-decoration-179502729.jpg') +') no-repeat center center/cover'
+        elm.style.background = 'url('+ require('./images/clouds.jpg') +') no-repeat center center/cover'
       }
       else if (d.weather[0].main === 'Rain') {
         elm.style.background = 'url('+ require('./images/rain.jpg') +') no-repeat center center/cover'
@@ -37,17 +37,11 @@ function Weather() {
       else if (d.weather[0].main === 'Thunderstorm') {
         elm.style.background = 'url('+ require('./images/thunderstorm.jpg') +') no-repeat center center/cover'
       }
-      else if (d.weather[0].main === 'Drizzle') {
-        elm.style.background = 'url('+ require('./images/drizzle.jpg') +') no-repeat center center/cover'
-      }
       else if (d.weather[0].main === 'Mist') {
-        elm.style.background = 'url('+ require('./images/mist.jpg') +') no-repeat center center/cover'
+        elm.style.background = 'url('+ require('./images/fog.jpg') +') no-repeat center center/cover'
       }
       else if (d.weather[0].main === 'Smoke') {
-        elm.style.background = 'url('+ require('./images/smoke.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Haze') {
-        elm.style.background = 'url('+ require('./images/haze.jpg') +') no-repeat center center/cover'
+        elm.style.background = 'url('+ require('./images/fog.jpg') +') no-repeat center center/cover'
       }
       else if (d.weather[0].main === 'Dust') {
         elm.style.background = 'url('+ require('./images/dust.jpg') +') no-repeat center center/cover'
@@ -55,20 +49,11 @@ function Weather() {
       else if (d.weather[0].main === 'Fog') {
         elm.style.background = 'url('+ require('./images/fog.jpg') +') no-repeat center center/cover'
       }
-      else if (d.weather[0].main === 'Sand') {
-        elm.style.background = 'url('+ require('./images/sand.jpg') +') no-repeat center center/cover'
-      }
-      else if (d.weather[0].main === 'Ash') {
-        elm.style.background = 'url('+ require('./images/ash.jpg') +') no-repeat center center/cover'
-      }
       else if (d.weather[0].main === 'Squall') {
         elm.style.background = 'url('+ require('./images/squall.jpg') +') no-repeat center center/cover'
       }
       else if (d.weather[0].main === 'Tornado') {
         elm.style.background = 'url('+ require('./images/tornado.jpg') +') no-repeat center center/cover'
-      }
-      else {
-        elm.style.background = 'url('+ require('./images/default.jpg') +') no-repeat center center/cover'
       } 
     }
     
